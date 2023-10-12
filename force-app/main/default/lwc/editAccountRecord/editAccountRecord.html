@@ -27,6 +27,20 @@
 
                 <!-- input fields -->
                 <lightning-input-field field-name={nameField}></lightning-input-field>
+
+                <!-- Disable the button if LocationService isn't available -->
+                <div class="slds-align_absolute-center slds-var-m-top_medium" if:false={requestInProgress}>
+                    <lightning-button
+                        variant="brand"
+                        disabled={locationButtonDisabled}
+                        icon-name="utility:checkin"
+                        label={buttonText}
+                        title="Use your device's GPS and other location sensors to determine your current location"
+                        onclick={handleGetCurrentLocationClick}>
+                    </lightning-button>
+                </div>
+                <lightning-input-field field-name={locationField} data-name="location" value={currentLocation}></lightning-input-field>
+
                 <lightning-input-field field-name={phoneField}></lightning-input-field>
                 <lightning-input-field field-name={websiteField}></lightning-input-field>
                 <lightning-input-field field-name={industryField}></lightning-input-field>
